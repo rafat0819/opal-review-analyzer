@@ -1,0 +1,48 @@
+=== PLATFORM TROUBLESHOOTING GUIDE: TECHNICAL & OPERATIONAL ISSUES ===
+
+ISSUE ID: AUTH_FAILURE (Login or API Token Error)
+Category: Technical
+Cause: Most often due to an expired or corrupted session token, or a mismatch in the local machine's system time.
+Solution: 
+1. Clear browser cookies and cache completely.
+2. Attempt login using a Private/Incognito window to bypass local extensions.
+3. Verify the system time and date settings on the local machine are correct (time drift causes token rejection).
+4. If the error persists, generate a new API token via the Profile Settings panel.
+
+ISSUE ID: DASHBOARD LOADING SLOW (HIGH LATENCY)
+Category: Performance
+Cause: Excessive data volume being requested for visualization. Performance dashboards often slow when requesting over 500,000 data points (e.g., requesting data for a year or more).
+Solution: 
+1. **Primary Fix:** Reduce the date range filter to "Last 30 Days" or "Last Quarter" only.
+2. Check if multiple high-volume data widgets (like detailed funnel reports) are loading simultaneously. Temporarily disable high-latency widgets.
+3. Change the data aggregation setting from "Hourly" to "Daily" to reduce the number of points requested.
+
+ISSUE ID: EXPORT BUTTON GRAYED OUT/EXPORT FAILS
+Category: Permissions/Usage
+Cause: This is strictly a user permissions failure. The current user likely lacks the required "Export" or "Admin" role needed to download sensitive raw data.
+Solution:
+1. Verify the user's current role in the Administration panel (Settings > User Management).
+2. Ensure the user holds the "Analyst" or "Admin" role (Viewer roles cannot export raw data).
+3. If the role is correct, check if the export file size exceeds the platform's 1GB limit.
+
+ISSUE ID: DATA INTEGRATION FAILURE (CAMPAIGN DATA MISSING)
+Category: Data Ingestion
+Cause: This is commonly a firewall block or an expired key in the external API connector (e.g., Salesforce, HubSpot).
+Solution:
+1. Check the Integration Status Dashboard for the specific connector (e.g., HubSpot Connector).
+2. Verify that the client's Firewall (or IP whitelist) is allowing our external API calls.
+3. Rerun the initial data synchronization job via the Data Integration Settings page.
+
+ISSUE ID: CONTENT GENERATION IS TOO GENERIC (AI QUALITY)
+Category: AI Quality/Guidance
+Cause: The AI model lacks sufficient context (i.e., the specific brand voice or proprietary product details).
+Solution:
+1. Advise the user to upload more internal documents to the agent's knowledge base (e.g., brand guidelines, specific product documentation).
+2. Encourage users to include specific **Product IDs** or **Tone of Voice** parameters in their prompts to steer the AI.
+
+ISSUE ID: NEW FEATURE REQUEST / ROADMAP INQUIRY
+Category: Guidance/Product
+Cause: Users seeking information on future product capabilities.
+Solution:
+1. Check the official "Public Roadmap" documentation (internal link only).
+2. If the feature is not listed, submit the request as a low-priority ticket labeled 'Feature Request' to the Product Team for consideration.
