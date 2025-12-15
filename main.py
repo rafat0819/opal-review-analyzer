@@ -32,15 +32,14 @@ async def analyze_review_sentiment(params: ReviewParams):
         category = "Technical Issue"
     elif any(word in text_lower for word in guidance_keywords):
         category = "Guidance"
-    elif polarity > 0.3:
+    elif polarity >= 0:
         category = "Positive"
-    elif polarity < -0.1:
-        category = "Negative"
     else:
-        category = "Neutral"
+        category = "Negative"
 
     # --- OUTPUT: Structured JSON ---
     return {
+        "review": params.text,
         "sentiment_score": round(polarity, 2),
         "category": category,
         "summary": f"Detected {category} with score {polarity:.2f}"
